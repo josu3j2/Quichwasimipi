@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Runasimi – Aprende Quechua</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fbf6ea;--ink:#2a1820;--mut:#6d5a5f;--card:#fffdf7;--line:#e4d6bc;--wine:#6b1d33;--teal:#17808a;--ochre:#e0a21a;--rose:#d4416a;--soft:#f3e7c9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1217;--ink:#f6ead7;--mut:#b9a5a8;--card:#291b22;--line:#4a3540;--wine:#e08aa3;--teal:#5fc4cc;--ochre:#f0b93a;--rose:#f27a9d;--soft:#35242c}}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Bricolage Grotesque",system-ui,sans-serif}
+.band{height:14px;background:repeating-linear-gradient(135deg,var(--wine) 0 14px,var(--ochre) 14px 28px,var(--teal) 28px 42px,var(--rose) 42px 56px)}
+header{padding:28px 20px 8px;max-width:960px;margin:auto}
+h1{font-size:clamp(2.4rem,9vw,4.2rem);line-height:1;margin:0;font-weight:800;color:var(--wine);letter-spacing:-.02em}
+header p{margin:8px 0 0;color:var(--mut);max-width:52ch}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;display:flex;gap:8px;overflow-x:auto;padding:12px 20px;max-width:960px;margin:auto;border-bottom:2px solid var(--line)}
+nav button{flex:none;font:600 .95rem inherit;font-family:inherit;border:2px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav button[aria-selected=true]{background:var(--wine);border-color:var(--wine);color:var(--bg)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+main{max-width:960px;margin:auto;padding:20px}
+.panel{display:none}.panel.on{display:block}
+h2{font-size:1.6rem;margin:0 0 4px}
+.lead{color:var(--mut);margin:0 0 16px}
+.tools{display:flex;gap:10px;align-items:center;margin-bottom:14px;font-size:.95rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.sw{border-radius:12px;padding:16px 12px;min-height:96px;border:2px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end}
+.sw b{font-size:1.3rem}.sw span{font-size:.9rem;opacity:.9}
+.fam{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:12px}
+.fam b{font-size:1.25rem;color:var(--wine);display:block}.fam span{color:var(--mut);font-size:.9rem}
+.hide .tr{visibility:hidden}.hide .grid>*:hover .tr,.hide .grid>*:focus .tr{visibility:visible}
+.field{display:flex;gap:8px;flex-wrap:wrap}
+input,select{font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);min-width:0}
+input{flex:1 1 180px;font-size:1.2rem}
+.go{font:700 1rem inherit;font-family:inherit;background:var(--teal);color:#fff;border:0;border-radius:10px;padding:10px 18px;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.chip{font:inherit;font-size:.9rem;background:var(--soft);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
+.msg{color:var(--mut);margin:8px 0}
+.tenses{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px}
+.t{background:var(--card);border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.t h3{margin:0;padding:10px 14px;background:var(--wine);color:var(--bg);font-size:1.05rem}
+.t:nth-child(3n+2) h3{background:var(--teal);color:#fff}.t:nth-child(3n) h3{background:var(--ochre);color:#2a1820}
+.r{display:flex;justify-content:space-between;gap:8px;padding:8px 14px;border-top:1px dashed var(--line)}
+.r small{color:var(--mut);display:block;line-height:1.2}
+.w{font-weight:600;text-align:right;overflow-wrap:anywhere}
+.rt{color:var(--ink)}.md{color:var(--teal)}.sf{color:var(--rose)}
+.abc{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.l{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:8px;text-align:center}
+.l b{font-size:1.6rem;color:var(--wine);display:block}.l span{font-size:.8rem;color:var(--mut)}
+.l.v{border-color:var(--ochre)}
+h3.s{margin:22px 0 8px;font-size:1.15rem}
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:800;font-size:1.2rem}
+.formula i{font-style:normal;padding:8px 14px;border-radius:10px;color:#fff}
+.sfx{width:100%;border-collapse:collapse;background:var(--card);font-size:.95rem}
+.sfx td,.sfx th{border:1px solid var(--line);padding:7px 10px;text-align:left}
+.sfx th{background:var(--soft)}
+.out{font-size:1.5rem;font-weight:800;margin-top:12px;padding:14px;border-radius:12px;background:var(--soft);overflow-wrap:anywhere}
+.scroll{overflow-x:auto}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:20px}
+</style>
+</head>
+<body>
+<div class="band"></div>
+<header>
+<h1>Runasimi</h1>
+<p>Aprende quechua boliviano: colores, familia, conjugación de verbos, alfabeto y estructura de la oración.</p>
+</header>
+<nav role="tablist" id="tabs">
+<button role="tab" aria-selected="true" data-t="verbos">Conjugar verbos</button>
+<button role="tab" aria-selected="false" data-t="colores">Colores</button>
+<button role="tab" aria-selected="false" data-t="familia">Familia</button>
+<button role="tab" aria-selected="false" data-t="numeros">Números</button>
+<button role="tab" aria-selected="false" data-t="cuerpo">Cuerpo</button>
+<button role="tab" aria-selected="false" data-t="animales">Animales</button>
+<button role="tab" aria-selected="false" data-t="naturaleza">Naturaleza</button>
+<button role="tab" aria-selected="false" data-t="frases">Frases</button>
+<button role="tab" aria-selected="false" data-t="abc">Alfabeto</button>
+<button role="tab" aria-selected="false" data-t="oracion">La oración</button>
+</nav>
+<main>
+
+<section class="panel on" id="verbos">
+<h2>Conjugador de verbos</h2>
+<p class="lead">Escribe un verbo en quechua terminado en <b>-y</b> (por ejemplo <i>mikhuy</i>) y verás su conjugación en presente, presente durativo, pasado y futuro.</p>
+<div class="field">
+<input id="vin" type="text" value="mikhuy" placeholder="Ej: puriy" autocapitalize="none" autocomplete="off" spellcheck="false" aria-label="Verbo en quechua">
+<button class="go" id="vgo">Conjugar</button>
+</div>
+<div class="chips" id="vchips" aria-label="Verbos de ejemplo"></div>
+<div class="msg" id="vmsg"></div>
+<div class="tenses" id="vout"></div>
+<p class="msg">Se quita la <b>-y</b> para obtener la raíz. Luego se añade el tiempo (<span class="md">chka</span>, <span class="md">rqa</span>, <span class="md">sqa</span>) y la persona (<span class="sf">ni, nki, n…</span>), como en la tabla de clase.</p>
+</section>
+
+<section class="panel" id="colores">
+<h2>Los colores</h2>
+<p class="lead">Colores en quechua con su significado en español.</p>
+<div class="tools"><label><input type="checkbox" class="prac" style="flex:none;width:auto"> Modo práctica: oculta el español (pasa el dedo o el cursor para ver)</label></div>
+<div class="grid" id="cgrid"></div>
+</section>
+
+<section class="panel" id="familia">
+<h2>La familia (<i>Ayllu</i>)</h2>
+<p class="lead">En quechua, el nombre del hermano o la hermana cambia según quién habla.</p>
+<div class="tools"><label><input type="checkbox" class="prac" style="flex:none;width:auto"> Modo práctica: oculta el español</label></div>
+<div class="grid" id="fgrid"></div>
+</section>
+
+<section class="panel" id="abc">
+<h2>El alfabeto</h2>
+<p class="lead">El quechua tiene tres vocales principales (a, i, u), marcadas en amarillo. Las consonantes pueden ser simples, aspiradas (con h) o glotalizadas (con ’).</p>
+<div class="abc" id="agrid"></div>
+<h3 class="s">Aspiradas y glotalizadas</h3>
+<div class="abc" id="agrid2"></div>
+</section>
+
+<section class="panel" id="oracion">
+<h2>Estructura de la oración</h2>
+<p class="lead">El quechua ordena la oración como <b>Sujeto + Objeto + Verbo</b>: el verbo va al final.</p>
+<div class="formula"><i style="background:var(--wine)">Sujeto</i>+<i style="background:var(--teal)">Objeto</i>+<i style="background:var(--rose)">Verbo</i></div>
+<p>Ejemplo: <b>Ñuqa t’anta mikhuni</b> = Yo pan como (“Yo como pan”).</p>
+<h3 class="s">Arma tu oración</h3>
+<div class="field">
+<select id="bs" aria-label="Sujeto"></select>
+<select id="bo" aria-label="Objeto"></select>
+<select id="bv" aria-label="Verbo"></select>
+</div>
+<div class="out" id="bout"></div>
+<div class="msg" id="bgl"></div>
+<h3 class="s">Sufijos que marcan la función</h3>
+<div class="scroll"><table class="sfx" id="sfx"></table></div>
+</section>
+</main>
+<footer>Basado en la tabla “Conjugación de verbos y tiempo” – Lengua originaria quechua.</footer>
+<div class="band"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+/* Pestañas */
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("on",p.id===b.dataset.t));
+  window.scrollTo({top:0});
+});
+
+/* Conjugación */
+const P=[["Ñuqa","yo"],["Qam","tú"],["Pay","él / ella"],["Ñuqanchik","nosotros (incl.)"],["Ñuqayku","nosotros (excl.)"],["Qamkuna","ustedes"],["Paykuna","ellos / ellas"]];
+const S=["ni","nki","n","nchik","yku","nkichik","nku"];
+const T=[
+ {n:"Presente",m:"",s:S},
+ {n:"Presente durativo",m:"chka",s:S},
+ {n:"Pasado testimonial",m:"rqa",s:S},
+ {n:"Pasado no testimonial",m:"sqa",s:S},
+ {n:"Futuro",m:"",s:["saq","nki","nqa","sunchik","saqku","nkichik","nqanku"]}
+];
+const V=[["mikhuy","comer"],["puriy","caminar"],["yachay","saber"],["ruway","hacer"],["rimay","hablar"],["munay","querer"],["wayk’uy","cocinar"],["llank’ay","trabajar"],["takiy","cantar"],["tusuy","bailar"],["upyay","beber"],["killkay","escribir"],["apay","llevar"],["qhaway","mirar"],["riy","ir"],["hamuy","venir"],["rikuy","ver"],["niy","decir"],["uyariy","escuchar"],["ñawiriy","leer"],["puñuy","dormir"],["kawsay","vivir"],["wañuy","morir"],["asiy","reír"],["waqay","llorar"],["pukllay","jugar"],["rantiy","comprar"],["tarpuy","sembrar"],["yanapay","ayudar"],["yachakuy","aprender"],["yachachiy","enseñar"],["mayllay","lavar"],["suyay","esperar"],["kutiy","volver"],["tiyay","sentarse"],["sayay","pararse"],["qillqay","escribir (otra forma)"],["ch’aqchuy","masticar"]];
+const norm=s=>s.trim().toLowerCase().replace(/['‘`´]/g,"’");
+function conj(){
+  const raw=norm($("#vin").value);
+  if(!raw){$("#vmsg").textContent="Escribe un verbo para conjugarlo.";$("#vout").innerHTML="";return}
+  let root=raw,msg="";
+  if(raw.endsWith("y")&&raw.length>2){root=raw.slice(0,-1);}
+  else msg="Los verbos suelen terminar en -y. Usé “"+raw+"” como raíz.";
+  const known=V.find(v=>v[0]===raw);
+  $("#vmsg").textContent=(known?"“"+raw+"” significa "+known[1]+". ":"")+"Raíz: "+root+". "+msg;
+  $("#vout").innerHTML=T.map(t=>`<div class="t"><h3>${t.n}</h3>`+P.map((p,i)=>
+    `<div class="r"><div><b>${p[0]}</b><small>${p[1]}</small></div><div class="w"><span class="rt">${esc(root)}</span><span class="md">${t.m}</span><span class="sf">${t.s[i]}</span></div></div>`).join("")+`</div>`).join("");
+}
+$("#vchips").innerHTML=V.map(v=>`<button class="chip" data-v="${v[0]}">${v[0]} · ${v[1]}</button>`).join("");
+$("#vchips").onclick=e=>{const b=e.target.closest("button");if(b){$("#vin").value=b.dataset.v;conj()}};
+$("#vgo").onclick=conj;
+$("#vin").addEventListener("keydown",e=>{if(e.key==="Enter")conj()});
+$("#vin").addEventListener("input",conj);
+
+/* Colores */
+const C=[["Yuraq","Blanco","#ffffff"],["Yana","Negro","#1d1d1d"],["Puka","Rojo","#d62828"],["Q’illu","Amarillo","#f4c20d"],["Ch’uxña","Verde","#2e9e4f"],["Anqas","Azul","#1d6fd6"],["Kulli","Morado","#7b3fa0"],["Ch’umpi","Café","#8a5a2b"],["Uqi","Gris","#8b8f94"]];
+const lum=h=>{const n=parseInt(h.slice(1),16);return(.299*(n>>16)+.587*((n>>8)&255)+.114*(n&255))/255};
+$("#cgrid").innerHTML=C.map(c=>`<div class="sw" tabindex="0" style="background:${c[2]};color:${lum(c[2])>.6?"#1d1d1d":"#fff"}"><b>${c[0]}</b><span class="tr">${c[1]}</span></div>`).join("");
+
+/* Familia */
+const F=[["Tayta","Papá, padre"],["Mama","Mamá, madre"],["Wawqe","Hermano (de un varón)"],["Turi","Hermano (de una mujer)"],["Ñaña","Hermana (de un varón)"],["Pana","Hermana (de una mujer)"],["Churi","Hijo (de un padre)"],["Ususi","Hija (de un padre)"],["Wawa","Bebé, hijo/a (de una madre)"],["Awicha","Abuela"],["Achachi","Abuelo"],["Tiyu","Tío"],["Tiya","Tía"],["Qhari","Hombre, esposo"],["Warmi","Mujer, esposa"],["Willka","Nieto/a"]];
+$("#fgrid").innerHTML=F.map(f=>`<div class="fam" tabindex="0"><b>${f[0]}</b><span class="tr">${f[1]}</span></div>`).join("");
+document.addEventListener("change",e=>{if(!e.target.classList.contains("prac"))return;
+  document.querySelectorAll(".prac").forEach(x=>x.checked=e.target.checked);
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("hide",e.target.checked));
+});
+
+/* Alfabeto */
+const A=[["a","allqu · perro",1],["ch","chaki · pie"],["i","inti · sol",1],["j","jamp’ara · sapo"],["k","kuka · coca"],["l","llama"],["ll","llaqta · pueblo"],["m","mama · madre"],["n","nina · fuego"],["ñ","ñawi · ojo"],["p","punku · puerta"],["q","quri · oro"],["r","runa · persona"],["s","sara · maíz"],["t","tayta · padre"],["u","urqu · cerro",1],["w","wawa · bebé"],["y","yaku · agua"]];
+$("#agrid").innerHTML=A.map(a=>`<div class="l ${a[2]?"v":""}"><b>${a[0]}</b><span>${a[1]}</span></div>`).join("");
+$("#agrid2").innerHTML=["chh","ch’","kh","k’","ph","p’","qh","q’","th","t’"].map(a=>`<div class="l"><b>${a}</b></div>`).join("");
+
+/* Constructor de oraciones */
+const SJ=[["Ñuqa",0,"yo"],["Qam",1,"tú"],["Pay",2,"él/ella"],["Ñuqanchik",3,"nosotros"],["Ñuqayku",4,"nosotros (excl.)"],["Qamkuna",5,"ustedes"],["Paykuna",6,"ellos"]];
+const OB=[["t’anta","pan"],["yaku","agua"],["aycha","carne"],["papa","papa"],["kuka","coca"],["sara","maíz"],["chuñu","chuño"],["quwi","cuy"],["llama","llama"]];
+const VB=[["mikhu","comer"],["upya","beber"],["muna","querer"],["apa","llevar"],["qhawa","mirar"],["wayk’u","cocinar"],["ranti","comprar"],["tarpu","sembrar"],["yanapa","ayudar"],["uyari","escuchar"]];
+$("#bs").innerHTML=SJ.map((s,i)=>`<option value="${i}">${s[0]} (${s[2]})</option>`).join("");
+$("#bo").innerHTML=OB.map((o,i)=>`<option value="${i}">${o[0]} (${o[1]})</option>`).join("");
+$("#bv").innerHTML=VB.map((v,i)=>`<option value="${i}">${v[0]}y (${v[1]})</option>`).join("");
+function build(){
+  const s=SJ[$("#bs").value],o=OB[$("#bo").value],v=VB[$("#bv").value];
+  $("#bout").textContent=`${s[0]} ${o[0]} ${v[0]}${S[s[1]]}`;
+  $("#bgl").textContent=`${s[0]} = ${s[2]} · ${o[0]} = ${o[1]} · ${v[0]}${S[s[1]]} = ${v[1]} (presente)`;
+}
+["#bs","#bo","#bv"].forEach(i=>$(i).onchange=build);
+
+const X=[["-ta","Objeto directo (¿qué?)","t’anta mikhuni · como pan"],["-pi","En, dentro de","wasipi · en la casa"],["-man","Hacia, a","llaqtaman · al pueblo"],["-manta","Desde, de (origen)","Larq’amanta · de Larq’a"],["-wan","Con, y","tayta-wan · con papá"],["-paq","Para","wawapaq · para el bebé"],["-pa / -q","De (posesión)","tayta-pa wasin · casa de papá"],["-kuna","Plural","wawakuna · bebés"]];
+$("#sfx").innerHTML="<tr><th>Sufijo</th><th>Función</th><th>Ejemplo</th></tr>"+X.map(x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${x[2]}</td></tr>`).join("");
+/* Temas nuevos */
+const TP=[
+["numeros","Los números (yupaykuna)","Cuenta en quechua del 1 al 1000.",[["Huk","1"],["Iskay","2"],["Kimsa","3"],["Tawa","4"],["Phisqa","5"],["Suqta","6"],["Qanchis","7"],["Pusaq","8"],["Isqun","9"],["Chunka","10"],["Iskay chunka","20"],["Pachak","100"],["Waranqa","1000"]]],
+["cuerpo","El cuerpo (kurku)","Partes del cuerpo humano.",[["Uma","Cabeza"],["Ñawi","Ojo"],["Sinqa","Nariz"],["Simi","Boca"],["Rinri","Oreja"],["Chukcha","Cabello"],["Kunka","Cuello"],["Rikra","Brazo"],["Maki","Mano"],["Ruk’ana","Dedo"],["Sonqo","Corazón"],["Wiksa","Barriga"],["Wasa","Espalda"],["Chaki","Pie, pierna"],["Kiru","Diente"],["Qallu","Lengua"],["Tullu","Hueso"]]],
+["animales","Los animales (uywakuna)","Animales de los Andes y de la casa.",[["Allqu","Perro"],["Michi","Gato"],["Llama","Llama"],["Alpaka","Alpaca"],["Kuntur","Cóndor"],["Quwi","Cuy"],["Atuq","Zorro"],["Puma","Puma"],["Ukuku","Oso"],["Wallpa","Gallina"],["Waka","Vaca"],["Kuchi","Cerdo"],["Challwa","Pez"],["Pisqu","Pájaro"],["Hampatu","Sapo"],["Ch’uspi","Mosca"]]],
+["naturaleza","La naturaleza (pachamama)","Elementos de la Madre Tierra.",[["Inti","Sol"],["Killa","Luna"],["Quyllur","Estrella"],["Para","Lluvia"],["Wayra","Viento"],["Rit’i","Nieve"],["Mayu","Río"],["Qucha","Lago"],["Yaku","Agua"],["Nina","Fuego"],["Urqu","Cerro"],["Pacha","Tierra, mundo"],["Sach’a","Árbol"],["T’ika","Flor"]]],
+["frases","Saludos y preguntas","Frases básicas para conversar.",[["Imaynalla","Hola, ¿cómo estás?"],["Allinmi","Estoy bien"],["Allin p’unchay","Buen día"],["Sulpayki","Gracias"],["Tupananchiskama","Hasta luego"],["Ima sutiyki?","¿Cómo te llamas?"],["Ari","Sí"],["Manan","No"],["Pi?","¿Quién?"],["Ima?","¿Qué?"],["May?","¿Dónde?"],["Hayk’a?","¿Cuánto?"]]]];
+TP.forEach(([id,t,l,d])=>{const s=document.createElement("section");s.className="panel";s.id=id;
+ s.innerHTML=`<h2>${t}</h2><p class="lead">${l}</p><div class="tools"><label><input type="checkbox" class="prac" style="flex:none;width:auto"> Modo práctica: oculta el español</label></div><div class="grid">`+d.map(x=>`<div class="fam" tabindex="0"><b>${x[0]}</b><span class="tr">${x[1]}</span></div>`).join("")+`</div>`;
+ document.querySelector("main").appendChild(s)});
+conj();build();
+</script>
+</body>
+</html>
