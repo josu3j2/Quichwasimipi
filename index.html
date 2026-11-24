@@ -182,7 +182,7 @@ const lum=h=>{const n=parseInt(h.slice(1),16);return(.299*(n>>16)+.587*((n>>8)&2
 $("#cgrid").innerHTML=C.map(c=>`<div class="sw" tabindex="0" style="background:${c[2]};color:${lum(c[2])>.6?"#1d1d1d":"#fff"}"><b>${c[0]}</b><span class="tr">${c[1]}</span></div>`).join("");
 
 /* Familia */
-const F=[["Tayta","Papá, padre"],["Mama","Mamá, madre"],["Wawqe","Hermano (de un varón)"],["Turi","Hermano (de una mujer)"],["Ñaña","Hermana (de un varón)"],["Pana","Hermana (de una mujer)"],["Churi","Hijo (de un padre)"],["Ususi","Hija (de un padre)"],["Wawa","Bebé, hijo/a (de una madre)"],["Awicha","Abuela"],["Achachi","Abuelo"],["Tiyu","Tío"],["Tiya","Tía"],["Qhari","Hombre, esposo"],["Warmi","Mujer, esposa"],["Willka","Nieto/a"]];
+const F=[["Tata","Papá, padre"],["Mama","Mamá, madre"],["Wawqi","Hermano (de un varón)"],["Turi","Hermano (de una mujer)"],["Ñaña","Hermana (de un varón)"],["Pana","Hermana (de una mujer)"],["Churi","Hijo (de un padre)"],["Ususi","Hija (de un padre)"],["Wawa","Bebé, hijo/a (de una madre)"],["jatun mama","Abuela"],["jatun tata","Abuelo"],["tatawki","Tío"],["ipa","Tía"],["qhari","Hombre"],["Warmi","Mujer"],["allchiy","Nieto/a"]];
 $("#fgrid").innerHTML=F.map(f=>`<div class="fam" tabindex="0"><b>${f[0]}</b><span class="tr">${f[1]}</span></div>`).join("");
 document.addEventListener("change",e=>{if(!e.target.classList.contains("prac"))return;
   document.querySelectorAll(".prac").forEach(x=>x.checked=e.target.checked);
@@ -190,14 +190,14 @@ document.addEventListener("change",e=>{if(!e.target.classList.contains("prac"))r
 });
 
 /* Alfabeto */
-const A=[["a","allqu · perro",1],["ch","chaki · pie"],["i","inti · sol",1],["j","jamp’ara · sapo"],["k","kuka · coca"],["l","llama"],["ll","llaqta · pueblo"],["m","mama · madre"],["n","nina · fuego"],["ñ","ñawi · ojo"],["p","punku · puerta"],["q","quri · oro"],["r","runa · persona"],["s","sara · maíz"],["t","tayta · padre"],["u","urqu · cerro",1],["w","wawa · bebé"],["y","yaku · agua"]];
+const A=[["a","allqu · perro",1],["ch","chaki · pie"],["i","inti · sol",1],["j","jampatu · sapo"],["l","llama"],["ll","llaqta · pueblo"],["m","mama · madre"],["n","nina · fuego"],["ñ","ñawi · ojo"],["p","punku · puerta"],["q","quri · oro"],["r","runa · persona"],["s","sara · maíz"],["t","tayta · padre"],["u","urqu · cerro",1],["w","wawa · bebé"],["y","yaku · agua"]];
 $("#agrid").innerHTML=A.map(a=>`<div class="l ${a[2]?"v":""}"><b>${a[0]}</b><span>${a[1]}</span></div>`).join("");
 $("#agrid2").innerHTML=["chh","ch’","kh","k’","ph","p’","qh","q’","th","t’"].map(a=>`<div class="l"><b>${a}</b></div>`).join("");
 
 /* Constructor de oraciones */
 const SJ=[["Ñuqa",0,"yo"],["Qam",1,"tú"],["Pay",2,"él/ella"],["Ñuqanchik",3,"nosotros"],["Ñuqayku",4,"nosotros (excl.)"],["Qamkuna",5,"ustedes"],["Paykuna",6,"ellos"]];
-const OB=[["t’anta","pan"],["yaku","agua"],["aycha","carne"],["papa","papa"],["kuka","coca"],["sara","maíz"],["chuñu","chuño"],["quwi","cuy"],["llama","llama"]];
-const VB=[["mikhu","comer"],["upya","beber"],["muna","querer"],["apa","llevar"],["qhawa","mirar"],["wayk’u","cocinar"],["ranti","comprar"],["tarpu","sembrar"],["yanapa","ayudar"],["uyari","escuchar"]];
+const OB=[["t’anta","pan"],["yaku","agua"],["aycha","carne"],["papa","papa"],["sara","maíz"],["chuñu","chuño"],["quwi","cuy"],["llama","llama"]];
+const VB=[["mikhu","comer"],["upyay","beber"],["munay","querer"],["apay","llevar"],["qhaway","mirar"],["wayk’u","cocinar"],["ranti","comprar"],["tarpuy","sembrar"],["yanapay","ayudar"],["uyariy","escuchar"]];
 $("#bs").innerHTML=SJ.map((s,i)=>`<option value="${i}">${s[0]} (${s[2]})</option>`).join("");
 $("#bo").innerHTML=OB.map((o,i)=>`<option value="${i}">${o[0]} (${o[1]})</option>`).join("");
 $("#bv").innerHTML=VB.map((v,i)=>`<option value="${i}">${v[0]}y (${v[1]})</option>`).join("");
