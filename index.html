@@ -177,7 +177,7 @@ $("#vin").addEventListener("keydown",e=>{if(e.key==="Enter")conj()});
 $("#vin").addEventListener("input",conj);
 
 /* Colores */
-const C=[["Yuraq","Blanco","#ffffff"],["Yana","Negro","#1d1d1d"],["Puka","Rojo","#d62828"],["Q’illu","Amarillo","#f4c20d"],["Ch’uxña","Verde","#2e9e4f"],["Anqas","Azul","#1d6fd6"],["Kulli","Morado","#7b3fa0"],["Ch’umpi","Café","#8a5a2b"],["Uqi","Gris","#8b8f94"]];
+const C=[["Yuraq","Blanco","#ffffff"],["Yana","Negro","#1d1d1d"],["Puka","Rojo","#d62828"],["Q’illu","Amarillo","#f4c20d"],["qumir","Verde","#2e9e4f"],["Anqas","Azul","#1d6fd6"],["Kulli","Morado","#7b3fa0"],["Ch’umpi","Café","#8a5a2b"],["Uqi","Gris","#8b8f94"]];
 const lum=h=>{const n=parseInt(h.slice(1),16);return(.299*(n>>16)+.587*((n>>8)&255)+.114*(n&255))/255};
 $("#cgrid").innerHTML=C.map(c=>`<div class="sw" tabindex="0" style="background:${c[2]};color:${lum(c[2])>.6?"#1d1d1d":"#fff"}"><b>${c[0]}</b><span class="tr">${c[1]}</span></div>`).join("");
 
